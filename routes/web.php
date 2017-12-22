@@ -13,9 +13,19 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
-Route::post('/signup', 'UserController@postSignUp')->name('signup');
-Route::post('/signin', 'UserController@postSignIn')->name('signin');
+Route::post('/signup', [
+    'uses' => 'UserController@postSignUp',
+    'as' => 'signup'
+]);
+Route::post('/signin', [
+    'uses' => 'UserController@postSignIn',
+    'as' => 'signin'
+]);
 
-Route::get('/dashboard', 'UserController@getDashboard')->name('dashboard');
+Route::get('/dashboard', [
+    'uses' => 'UserController@getDashboard',
+    'as' => 'dashboard',
+    'middleware' => 'auth'
+]);
