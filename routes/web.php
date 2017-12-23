@@ -15,17 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::post('/signup', [
-    'uses' => 'UserController@postSignUp',
-    'as' => 'signup'
-]);
-Route::post('/signin', [
-    'uses' => 'UserController@postSignIn',
-    'as' => 'signin'
-]);
+Route::post('/signup', ['uses' => 'UserController@postSignUp', 'as' => 'signup']);
+Route::post('/login', ['uses' => 'UserController@postLogin', 'as' => 'login']);
+Route::get('/login', ['uses' => 'UserController@getLogin', 'as' => 'login']);
 
-Route::get('/dashboard', [
-    'uses' => 'UserController@getDashboard',
-    'as' => 'dashboard',
-    'middleware' => 'auth'
-]);
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/dashboard', [
+        'uses' => 'UserController@getDashboard',
+        'as' => 'dashboard'
+    ]);
+});

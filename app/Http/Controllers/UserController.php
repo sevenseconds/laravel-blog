@@ -36,14 +36,19 @@ class UserController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function postSignIn(Request $request)
+    public function getLogin()
+    {
+        return view('welcome');
+    }
+
+    public function postLogin(Request $request)
     {
         $this->validate($request, [
             'email' => 'required',
             'password' => 'required'
         ]);
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
-            return redirect()->route('dashboard');
+            return redirect()->intended('dashboard');
         }
         return redirect()->back();
     }

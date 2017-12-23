@@ -37,7 +37,7 @@
         </div>
         <div class="col-md-6">
             <h3>Sign In</h3>
-            <form action="{{ route('signin') }}" method="post">
+            <form action="{{ route('login') }}" method="post">
                 <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
                     <label for="email">E-Mail</label>
                     <input type="text" id="email" class="form-control" name="email" value="{{ Request::old('email') }}">
