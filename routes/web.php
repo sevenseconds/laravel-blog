@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::post('/signup', ['uses' => 'UserController@postSignUp', 'as' => 'signup']);
 Route::post('/login', ['uses' => 'UserController@postLogin', 'as' => 'login']);
 Route::get('/login', ['uses' => 'UserController@getLogin', 'as' => 'login']);
+Route::get('/logout', ['uses' => 'UserController@getLogout', 'as' => 'logout']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [
