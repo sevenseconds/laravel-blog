@@ -25,3 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
         'as' => 'dashboard'
     ]);
 });
+
+Route::prefix('posts')->group(function () {
+    Route::post('create', ['uses' => 'PostController@postCreate', 'as' => 'post.create']);
+});
