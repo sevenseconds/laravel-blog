@@ -4,17 +4,7 @@
 @endsection
 
 @section('content')
-    @if($errors->any())
-        <div class="row">
-            <div class="col-md-6">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('shared.message-block')
     <div class="row">
         <div class="col-md-6">
             <h3>Sign Up</h3>
