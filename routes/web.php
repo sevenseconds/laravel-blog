@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
@@ -30,4 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
 Route::prefix('posts')->middleware(['auth'])->group(function () {
     Route::post('/create', ['uses' => 'PostController@postCreate', 'as' => 'post.create']);
     Route::get('/delete/{postId}', ['uses' => 'PostController@deletePost', 'as' => 'post.delete']);
+    Route::post('/edit', ['uses' => 'PostController@postEditPost', 'as' => 'post.edit']);
 });
