@@ -21,7 +21,7 @@ Route::get('/login', ['uses' => 'UserController@getLogin', 'as' => 'login']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [
-        'uses' => 'UserController@getDashboard',
+        'uses' => 'PostController@getDashboard',
         'as' => 'dashboard'
     ]);
 });
