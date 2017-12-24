@@ -65,6 +65,6 @@
     </div><!-- /.modal -->
     <script>
         var token = '{{ Session::token() }}';
-        var url = '{{ route('post.edit') }}';
+        var urlEdit = '{{ route('post.edit') }}';
     </script>
 @endsection
